@@ -1,29 +1,24 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect, Component} from 'react';
 
-import {Alert, Button, Text} from 'react-native';
+import {View, Button, Text} from 'react-native';
 
 
 
-export default function Click() {
+export default function Click({ route, navigation }) {
+  const [count, setCount] = useState(null);
 
-  const [count, setCount] = useState(0);
+  useEffect(()=>{
+    setCount(route.params.count)
+  },[route.params.count])
 
-  let countString = "count:"+count;
-
-  function handleClick() {
-    setCount(count+1)
-    // Alert.alert("count:"+count);
-
+  const handleClick = () => {
+    setCount(oldCount=>oldCount+1)
   }
 
-  return (
-<>
-    <Button title={countString} onPress={handleClick}/>
-  <Text>{count}</Text>
-  </>
-
-   
-
-  );
-
+    return (
+      <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+        <Text>Click Screen</Text>
+        <Button title={`count: ${count}`} onPress={handleClick}/>
+      </View>
+    )
 }
