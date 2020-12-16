@@ -24,7 +24,22 @@ const styles = StyleSheet.create({
     loading: {
         flex: 1,
         marginTop: StatusBar.currentHeight || 50,
-    }
+    },
+    form: {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      padding: 35,
+      marginTop: StatusBar.currentHeight || 0,
+    },
+    inputStyle: {
+      width: '100%',
+      marginBottom: 15,
+      paddingBottom: 15,
+      alignSelf: "center",
+      borderColor: "#ccc",
+      borderBottomWidth: 1
+    },
 })
 
 export default styles;

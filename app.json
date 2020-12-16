@@ -20,7 +20,16 @@
       "supportsTablet": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyCzjT0bsPROAveZESPd4ICMlLR07jTYJjE",
+          "authDomain": "project-6913601006011585115.firebaseapp.com",
+          "databaseURL": "https://project-6913601006011585115.firebaseio.com",
+          "projectId": "project-6913601006011585115",
+          "storageBucket": "project-6913601006011585115.appspot.com",
+          "messagingSenderId": "435814823056"
+        }
+      }
     }
   }
 }

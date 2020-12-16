@@ -6,14 +6,15 @@ import { Icon, Fab } from 'native-base';
 
 import * as firebase from 'firebase';
 import firestore from 'firebase/firestore';
-import {config} from '../firebase_config';
+// import {config} from '../firebase_config';
+import * as FirebaseCore from 'expo-firebase-core';
 
 export default function ProductList(){
     YellowBox.ignoreWarnings(['Setting a timer']);
     const [product ,setProduct] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [isSelected, setIsSelected] = useState(null)
+    const [isSelected, setIsSelected] = useState(null);
 
     function update(){
         setModalVisible(false);
@@ -34,7 +35,8 @@ export default function ProductList(){
     const db = firebase.firestore();
 
     if (!firebase.apps.length) {
-        firebase.initializeApp(config);
+        // firebase.initializeApp(config);
+        firebase.initializeApp(FirebaseCore.DEFAULT_WEB_APP_OPTIONS);
     }
 
 
@@ -42,8 +44,8 @@ export default function ProductList(){
         const newProducts=[];
         setIsLoading(true)
         try {
-          const querySnapshot = await db.collection("product").get();    
-          querySnapshot.forEach((doc) => {
+            const querySnapshot = await db.collection("product").orderBy("price","asc").get();
+            querySnapshot.forEach((doc) => {
             const newProduct = {
                 desc:doc.data().desc,
                 price:doc.data().price
